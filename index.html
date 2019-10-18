@@ -24,5 +24,14 @@ v.src=c,v.async=!0,v.id="_uasdk",v.rel=e,t.head.appendChild(v)}(window,document,
     token: 'MTo1cnh3MmV5RVJzT3FOajdndXIzd193OmF2bkRNbU1Xb3FwTlZ1Nk1vYzZ2T2N1TmdYQ0FQMkwtNWRSNWxkVGtCRTg'
   });
 
+UA.then(function(sdk){ 
+	if (sdk.canRegister) {
+		sdk.register();
+	}
+});
+
+
+sdk.canRegister
+
 </script>
 </html>
