@@ -27,6 +27,11 @@ UA.then(function(sdk){
 	if (sdk.canRegister) {
 		sdk.register();
 	}
+
+  sdk.addEventListener('channel', function(e){
+    console.log('channel registered');
+    console.log(e);
+  });
 });
 
 </script>
