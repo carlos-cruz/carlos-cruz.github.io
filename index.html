@@ -28,9 +28,12 @@ UA.then(function(sdk){
 		sdk.register();
 	}
 
-  sdk.addEventListener('channel', function(e){
+  sdk.addEventListener('channel', function(channel){
     console.log('channel registered');
-    console.log(e);
+    console.log(channel);
+    if (channel.optedIn) {
+      console.log('channel optedIn');
+    }
   });
 });
 
