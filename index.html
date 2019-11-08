@@ -30,7 +30,7 @@ UA.then(function(sdk){
 
   sdk.addEventListener('channel', function(e){
     console.log('channel registered');
-    console.log(channel);
+    console.log(e);
     if (e.channel.optedIn) {
       console.log('channel optedIn');
     }
