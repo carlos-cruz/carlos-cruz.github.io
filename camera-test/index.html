@@ -3,10 +3,59 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Camera test</title>
+	<style>
+		body{
+			background-color: #000;
+			position: relative;
+			text-align: center;
+		}
+		video{
+			display: block;
+			width: 100%;
+		}
+		.container{
+			position: relative;
+		}
+		button#capture{
+			position: absolute;
+			top: 90%;
+			left: 45%;
+			height: 3em;
+			border-radius: 2em;
+		}
+		#capture-area{
+			position: absolute;
+			display: block;
+			border: 3px dashed red;
+			top: 25%;
+			left: 20%;
+			width: 60%;
+			height: 50%;
+			border-radius: 2em;
+		}
+		.instrucciones{
+			color: white;
+			font-family: Arial;
+			font-size: 1em;
+			position: absolute;
+			top: 20%;
+			text-align: center;
+			width: 100%;
+			text-shadow: -1px 2px 5px rgba(150, 150, 150, 0.85);
+		}
+		#snapshot{
+			margin: 3em auto;
+		}
+	</style>
 </head>
 <body>
-	<video id="player" controls autoplay></video>
-	<button id="capture">Capturar</button>
+	<div class="container">
+		<div class="instrucciones">Intenta que tu credencial quede dentro del recuadro rojo..</div>
+		<div id="capture-area"></div>
+		<video id="player" autoplay></video>
+		<button id="capture">Capturar foto</button>
+	</div>
+	
 	<canvas id="snapshot" width=320 height=240></canvas>
 
 	<script>
