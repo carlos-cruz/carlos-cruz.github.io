@@ -12,7 +12,13 @@
 			margin:0;
 		}
 		video{
-			
+			/*position: absolute;
+			top: -9999px;
+			bottom: -9999px;
+			left: -9999px;
+			right: -9999px;
+			margin: auto;
+			overflow: hidden;*/
 		}
 		#video-container{
 			overflow: hidden;
@@ -22,6 +28,7 @@
 			left: -9999px;
 			right: -9999px;
 			margin: auto;
+			max-width: 100%;
 		}
 		.container{
 			position: absolute;
@@ -171,7 +178,10 @@
 				video: {
 					facingMode: "environment",
 					width: window.innerWidth,
-					height: window.innerHeight
+					height: {
+						min: 720
+					},
+					aspectRatio: { exact: 0.55 }
 				}
 			})
 			.then(handleSuccess);
