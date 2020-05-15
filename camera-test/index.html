@@ -171,19 +171,34 @@
 			startVideo();
 		});
 
+		
+		var constraintM = {
+			video: {
+				facingMode: "environment",
+				aspectRatio: { exact: 1 },
+				height: window.outerHeight
+			}
+		};
+
+		var constraintD = {
+			video: {
+				facingMode: "environment",
+				height: window.outerHeight,
+				width: window.innerWidth
+			}
+		};
+
+		function getUsrM(constr){
+			return navigator.mediaDevices.getUserMedia(constr)
+			.then(handleSuccess)
+		}
+
 		function startVideo(){
 			console.log(window.innerWidth,window.innerHeight)
-			navigator.mediaDevices.getUserMedia(
-			{
-				video: {
-					facingMode: "environment",
-					// width: window.innerWidth,
-					// aspectRatio: { exact: 0.5 }
-					height: window.outerHeight,
-					aspectRatio: { exact: 1 }
-				}
+			getUsrM(constraintM)
+			.catch(err => {
+				getUsrM(constraintD)
 			})
-			.then(handleSuccess);
 		}
 
 		function setVideoContainerDimensions(settings){
