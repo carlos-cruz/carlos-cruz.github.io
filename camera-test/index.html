@@ -38,7 +38,7 @@
 			left: 0;
 		}
 		button#capture{
-			height: 8em;
+			height: 7em;
 			border-radius: 8em;
 			z-index: 2;
 		}
@@ -75,6 +75,8 @@
 		}
 		#snapshot{
 			margin: 3em auto;
+			height: 270px;
+			width: 100%;
 		}
 		.hidden{
 			display: none;
@@ -108,7 +110,7 @@
 	
 	<div id="preview" class="hidden">
 		<h3>Preview</h3>
-		<canvas id="snapshot" width=320 height=240></canvas>
+		<canvas id="snapshot"></canvas>
 		<div class="options">
 			<button id="reintentarbtn">Reintentar</button>
 		</div>
@@ -130,6 +132,7 @@
 			preview.classList.remove('hidden');
 
 			var context = snapshot.getContext('2d');
+			console.log(player.width)
 			// Draw the video frame to the canvas.
 			context.drawImage(player, 0, 0, snapshotCanvas.width, snapshotCanvas.height);
 		});
@@ -139,7 +142,12 @@
 			pictureContainer.classList.remove('hidden');
 		});
 
-		navigator.mediaDevices.getUserMedia({video: true})
+		navigator.mediaDevices.getUserMedia(
+		{
+			video: {
+				facingMode: "environment"
+			}
+		})
 		.then(handleSuccess);
 	</script>
 </body>
