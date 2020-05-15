@@ -31,7 +31,7 @@
 		}
 		.button{
 			position: absolute;
-			top: 85%;
+			bottom: 1em;
 			width: 100%;
 			left: 0;
 		}
@@ -54,14 +54,12 @@
 			margin: 1em auto;
 			border-radius: 2em;
 			border: 5px dashed red;
-			max-width: 85%;
-			min-width: 330px;
+			max-width: 80%;
 			width: auto;
 			height: 84%;
 		}
 		.instrucciones{
 			position: absolute;
-			top: 17%;
 			width: 100%;
 			text-align: center;
 			z-index: 2;
@@ -122,7 +120,7 @@
 			<button id="reintentarbtn">Reintentar</button>
 		</div>
 	</div>
-	<script>
+	<script type="text/javascript">
 		var player = document.getElementById('player');
 		var snapshotCanvas = document.getElementById('snapshot');
 		var captureButton = document.getElementById('capture');
@@ -180,7 +178,7 @@
 		}
 
 		function setVideoContainerDimensions(settings){
-			//console.log(settings)
+			console.log(settings)
 			videoContainer.style.height = settings.height + 'px';
 			videoContainer.style.width = settings.width + 'px';
 		}
