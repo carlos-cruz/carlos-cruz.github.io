@@ -12,7 +12,7 @@
 			margin:0;
 		}
 		video{
-			position: absolute;
+			/*position: absolute;
 			min-width: 100%;
 			min-height: 100%;
 
@@ -21,7 +21,7 @@
 
 			top: 50%;
 			left: 50%;
-			transform: translate(-50%,-50%);
+			transform: translate(-50%,-50%);*/
 		}
 		.container{
 			position: absolute;
@@ -135,9 +135,11 @@
 		};
 
 		captureButton.addEventListener('click', function() {
-			var top = captureArea.offsetTop
+			var top = captureArea.offsetTop + 20
 			var left = captureZone.offsetLeft
+			var width = captureZone.offsetWidth
 
+			console.log(top,left,width);
 
 			pictureContainer.classList.add('hidden');
 			preview.classList.remove('hidden');
@@ -145,7 +147,7 @@
 			var context = snapshot.getContext('2d');
 			// Draw the video frame to the canvas.
 			// window.innerWidth
-			context.drawImage(player, left, top, 330,200, 0, 0, snapshotCanvas.width, snapshotCanvas.height);
+			context.drawImage(player, left, top, width,200, 0, 0, snapshotCanvas.width, snapshotCanvas.height);
 			//
 
 			videoTracks.forEach(function(track){ track.stop() })
@@ -158,12 +160,13 @@
 		});
 
 		function startVideo(){
+			console.log(window.innerWidth,window.innerHeight)
 			navigator.mediaDevices.getUserMedia(
 			{
 				video: {
 					facingMode: "environment",
-					width: 375,
-					height: 812
+					width: window.innerWidth,
+					height: window.innerHeight
 				}
 			})
 			.then(handleSuccess);
