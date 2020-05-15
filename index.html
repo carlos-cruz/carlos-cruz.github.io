@@ -7,35 +7,5 @@
 <body>
 	<h1>Hello world</h1>
 </body>
-<script type="text/javascript">
-// 86acbd31cd7c09cf30acb66d2fbedc91daa48b86:1571355915.209663
-!function(n,t,c,e,u){function r(n){try{f=n(u)}catch(n){return h=n,void i(p,n)}i(s,f)}function i(n,t){for(var c=0;c<n.length;c++)d(n[c],t);
-}function o(n,t){return n&&(f?d(n,f):s.push(n)),t&&(h?d(t,h):p.push(t)),l}function a(n){return o(!1,n)}function d(t,c){
-n.setTimeout(function(){t(c)},0)}var f,h,s=[],p=[],l={then:o,catch:a,_setup:r};n[e]=l;var v=t.createElement("script");
-v.src=c,v.async=!0,v.id="_uasdk",v.rel=e,t.head.appendChild(v)}(window,document,'https://aswpsdkus.com/notify/v1/ua-sdk.min.js',
-  'UA', {
-    
-    // Only needed when used on insecure hosts:
-    // secureIframeUrl: 'https://your.secure.domain/path/to/web-push-secure-bridge.html',
 
-    vapidPublicKey: 'BENlhaWmotBwqc2LV2vs_YM0Srbm8_ZZDdipp-imcHpcYojJEEKg8XTbN3PpfrPsKb7OQ4P3aSGl84MbKrIR91Q=',
-    appKey: '5rxw2eyERsOqNj7gur3w_w',
-    token: 'MTo1cnh3MmV5RVJzT3FOajdndXIzd193OmF2bkRNbU1Xb3FwTlZ1Nk1vYzZ2T2N1TmdYQ0FQMkwtNWRSNWxkVGtCRTg'
-  });
-
-UA.then(function(sdk){ 
-	if (sdk.canRegister) {
-		sdk.register();
-	}
-
-  sdk.addEventListener('channel', function(e){
-    console.log('channel registered');
-    console.log(e);
-    if (e.channel.optedIn) {
-      console.log('channel optedIn');
-    }
-  });
-});
-
-</script>
 </html>
