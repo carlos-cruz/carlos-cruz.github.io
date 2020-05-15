@@ -41,6 +41,7 @@
 			height: 7em;
 			border-radius: 8em;
 			z-index: 2;
+			border: 0;
 		}
 		#capture-area{
 			position: absolute;
@@ -50,7 +51,7 @@
 			z-index: 1;
 			text-align: center;
 		}
-		#capture-area .zone{
+		#capture-area #zone{
 			margin: 1em auto;
 			border-radius: 2em;
 			border: 5px dashed red;
@@ -75,7 +76,8 @@
 		}
 		#snapshot{
 			margin: 3em auto;
-			height: 270px;
+			height: 200px;
+			max-width: 330px;
 			width: 100%;
 		}
 		.hidden{
@@ -99,7 +101,7 @@
 			<p>Intenta que tu credencial quede dentro del recuadro rojo</p>
 		</div>
 		<div id="capture-area">
-			<div class="zone"></div>
+			<div id="zone"></div>
 		</div>
 		<video id="player" autoplay></video>
 		
@@ -122,33 +124,45 @@
 		var pictureContainer = document.getElementById('pictureContainer');
 		var preview = document.getElementById('preview');
 		var reintentarbtn = document.getElementById('reintentarbtn');
+		var captureZone = document.getElementById('zone');
+		var videoTracks;
 
 		var handleSuccess = function(stream) {
 			player.srcObject = stream;
+			videoTracks = stream.getVideoTracks();
 		};
 
 		captureButton.addEventListener('click', function() {
+			console.log(captureZone.offsetLeft,captureZone.offsetTop);
+
 			pictureContainer.classList.add('hidden');
 			preview.classList.remove('hidden');
 
 			var context = snapshot.getContext('2d');
-			console.log(player.width)
 			// Draw the video frame to the canvas.
-			context.drawImage(player, 0, 0, snapshotCanvas.width, snapshotCanvas.height);
+			// window.innerWidth
+			context.drawImage(player, 150 + captureZone.offsetLeft,110, 330,200, 0, 0, snapshotCanvas.width, snapshotCanvas.height);
+			//
+
+			videoTracks.forEach(function(track){ track.stop() })
 		});
 
 		reintentarbtn.addEventListener('click', function(){
 			preview.classList.add('hidden');
 			pictureContainer.classList.remove('hidden');
+			startVideo();
 		});
 
-		navigator.mediaDevices.getUserMedia(
-		{
-			video: {
-				facingMode: "environment"
-			}
-		})
-		.then(handleSuccess);
+		function startVideo(){
+			navigator.mediaDevices.getUserMedia(
+			{
+				video: {
+					facingMode: "environment"
+				}
+			})
+			.then(handleSuccess);
+		}
+		startVideo()
 	</script>
 </body>
 </html>
