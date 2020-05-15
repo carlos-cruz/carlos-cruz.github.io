@@ -177,11 +177,10 @@
 			{
 				video: {
 					facingMode: "environment",
-					width: window.innerWidth,
-					height: {
-						min: 720
-					},
-					aspectRatio: { exact: 0.55 }
+					// width: window.innerWidth,
+					// aspectRatio: { exact: 0.5 }
+					height: window.outerHeight,
+					aspectRatio: { exact: 1 }
 				}
 			})
 			.then(handleSuccess);
