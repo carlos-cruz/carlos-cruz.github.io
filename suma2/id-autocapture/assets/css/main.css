@@ -157,7 +157,7 @@ footer {
 @media (max-width: 600px) {
   .content_preview {
     width: calc(90% - 10px);
-    height: 640px;
+    height: 75vh;
   }
   .content_progress {
     width: calc(90% - 10px);
